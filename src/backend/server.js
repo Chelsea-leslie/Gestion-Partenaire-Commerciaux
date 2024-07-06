@@ -1,30 +1,46 @@
-//creation d'un fichier server.js pour communiquer avec la base de donnee
+// Importation des modules nécessaires
 const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const ConnectDb = require("./db");
+const cors = require("cors"); // Importez cors
 
 dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(express.json());
+// Middleware pour parser le corps des requêtes en JSON
+app.use(bodyParser.json());
 
-// Routes
+// Utilisez CORS
+app.use(cors());
+
+// Importation des routes
+const partners = require("./routes/partenaire");
+const projects = require("./routes/projets");
+const users = require("./routes/utilisateurs");
+const payments = require("./routes/payements");
+const statistics = require("./routes/statistiques");
+const reports = require("./routes/rapports");
+
+// Utilisation des routes avec le préfixe /api
+app.use("/api/partenaire", partners);
+app.use("/api/projets", projects);
+app.use("/api/utilisateurs", users);
+app.use("/api/payements", payments);
+app.use("/api/statistiques", statistics);
+app.use("/api/rapports", reports);
+
+// Route de test pour vérifier que l'API fonctionne
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+// Initialisation du port pour l'application
 const PORT = process.env.PORT || 5000;
 
+// Démarrage du serveur
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-
-//connexion du server a mongodb
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB is connected"))
-  .catch((err) => console.log(err));
+// Connexion à la base de données MongoDB
+ConnectDb();
