@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button, Typography, Checkbox, FormControlLabel } from '@mui/material';
+// import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 
 const ProjectForm = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
@@ -53,6 +57,7 @@ const ProjectForm = () => {
           setEndDate('');
           setSelectedPartners([]);
           alert('Projet créé avec succès!');
+          navigate("/Listproject");
         }
       } else {
         const text = await response.text();
@@ -74,6 +79,14 @@ const ProjectForm = () => {
 
   return (
     <Box>
+      {/* <Button
+        startIcon={<ArrowBackIcon />}
+        variant="outlined"
+        color="secondary"
+        onClick={() => navigate(-1)}
+      >
+        Retour
+      </Button> */}
       <Typography variant="h4">Créer un Projet</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -81,7 +94,7 @@ const ProjectForm = () => {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={title || ''}
+          value={title || ""}
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
@@ -89,7 +102,7 @@ const ProjectForm = () => {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={description || ''}
+          value={description || ""}
           onChange={(e) => setDescription(e.target.value)}
         />
         <TextField
@@ -97,7 +110,7 @@ const ProjectForm = () => {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={amount || ''}
+          value={amount || ""}
           onChange={(e) => setAmount(e.target.value)}
         />
         <TextField
@@ -105,7 +118,7 @@ const ProjectForm = () => {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={charges || ''}
+          value={charges || ""}
           onChange={(e) => setCharges(e.target.value)}
         />
         <TextField
@@ -117,7 +130,7 @@ const ProjectForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
-          value={startDate || ''}
+          value={startDate || ""}
           onChange={(e) => setStartDate(e.target.value)}
         />
         <TextField
@@ -129,10 +142,12 @@ const ProjectForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
-          value={endDate || ''}
+          value={endDate || ""}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <Typography variant="h6" margin="normal">Assigner des Partenaires :</Typography>
+        <Typography variant="h6" margin="normal">
+          Assigner des Partenaires :
+        </Typography>
         {partners.map((partner) => (
           <FormControlLabel
             key={partner._id}
@@ -145,7 +160,9 @@ const ProjectForm = () => {
             label={partner.name}
           />
         ))}
-        <Button type="submit" variant="contained" color="primary">Créer</Button>
+        <Button type="submit" variant="contained" color="primary">
+          Créer
+        </Button>
       </form>
     </Box>
   );

@@ -6,11 +6,11 @@ import PartnerList from "./components/OperationPartner/partnerList";
 import PartnerEdit from "./components/OperationPartner/partnerEdit";
 import ProjectEdit from "./components/OperationProject/projectEdit";
 import ProjectList from "./components/OperationProject/projectList";
-import PartnerForm from "./components/formulaires/partnerform";
 import ProjectForm from "./components/formulaires/projectform"
 import PartnerManagement from "./components/partnerManagment";
 import ProjectManagement from "./components/projectManagment";
 import Reports from "./components/reports";
+import PagePartnerForm from "./components/pagePartnerForm";
 // import Setting from "./components/setting";
 
 
@@ -25,7 +25,7 @@ function App() {
         {/* Route pour le tableau de bord */}
         <Route path="/dashboard" element={<Dashboard />} />
         {/* Route pour ajouter partenaire */}
-        <Route path="/add-partner" element={<PartnerForm />} />
+        <Route path="/add-partner" element={<PagePartnerForm />} />
         {/* Route pour ajouter projets */}
         <Route path="/add-project" element={<ProjectForm />} />
         {/* Route pour modifier partenaire */}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Checkbox, FormControlLabel } from '@mui/material';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const ProjectEdit = () => {
   const { id } = useParams();
@@ -92,6 +93,14 @@ const ProjectEdit = () => {
 
   return (
     <Box>
+      <Button
+        startIcon={<ArrowBackIcon />}
+        variant="outlined"
+        color="secondary"
+        onClick={() => navigate(-1)}
+      >
+        Retour
+      </Button>
       <Typography variant="h4">Modifier Projet</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -146,7 +155,9 @@ const ProjectEdit = () => {
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <Typography variant="h6" margin="normal">Assigner des Partenaires :</Typography>
+        <Typography variant="h6" margin="normal">
+          Assigner des Partenaires :
+        </Typography>
         {partners.map((partner) => (
           <FormControlLabel
             key={partner._id}
@@ -159,7 +170,9 @@ const ProjectEdit = () => {
             label={partner.name}
           />
         ))}
-        <Button type="submit" variant="contained" color="primary">Enregistrer</Button>
+        <Button type="submit" variant="contained" color="primary">
+          Enregistrer
+        </Button>
       </form>
     </Box>
   );

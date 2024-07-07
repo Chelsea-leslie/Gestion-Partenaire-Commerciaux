@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 const PartnerEdit = () => {
   const { id } = useParams();
@@ -46,6 +48,14 @@ const PartnerEdit = () => {
 
   return (
     <Box>
+    <Button
+        startIcon={<ArrowBackIcon />}
+        variant="outlined"
+        color="secondary"
+        onClick={() => navigate(-1)}
+      >
+        Retour
+      </Button>
       <Typography variant="h4">Modifier Partenaire</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
