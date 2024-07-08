@@ -2,15 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login";
 import Dashboard from "./components/dashboard";
-import PartnerList from "./components/OperationPartner/partnerList";
-import PartnerEdit from "./components/OperationPartner/partnerEdit";
-import ProjectEdit from "./components/OperationProject/projectEdit";
-import ProjectList from "./components/OperationProject/projectList";
-import ProjectForm from "./components/formulaires/projectform"
 import PartnerManagement from "./components/partnerManagment";
 import ProjectManagement from "./components/projectManagment";
 import Reports from "./components/reports";
 import PagePartnerForm from "./components/pagePartnerForm";
+import PageProjectForm from "./components/pageProjectForm";
+import PageListPartenaire from "./components/pageListPartenaire";
+import PageListProject from "./components/pageListProjet";
+import PagePartnerEdit from "./components/PageEditPartner";
+import PageProjectEdit from "./components/PageEditProject";
 // import Setting from "./components/setting";
 
 
@@ -27,15 +27,15 @@ function App() {
         {/* Route pour ajouter partenaire */}
         <Route path="/add-partner" element={<PagePartnerForm />} />
         {/* Route pour ajouter projets */}
-        <Route path="/add-project" element={<ProjectForm />} />
+        <Route path="/add-project" element={<PageProjectForm />} />
         {/* Route pour modifier partenaire */}
-        <Route path="/edit-partner/:id" element={<PartnerEdit />} />
+        <Route path="/edit-partner/:id" element={<PagePartnerEdit />} />
         {/* Route pour lister partenaires */}
-        <Route path="/Listpartners" element={<PartnerList />} />
+        <Route path="/Listpartners" element={<PageListPartenaire />} />
         {/* Route pour modifier projects */}
-        <Route path="/edit-project/:id" element={<ProjectEdit />} />
+        <Route path="/edit-project/:id" element={<PageProjectEdit />} />
         {/* Route pour lister projets */}
-        <Route path="/Listproject" element={<ProjectList />} />
+        <Route path="/Listproject" element={<PageListProject />} />
         {/* Route pour le managments des partenaires */}
         <Route path="/partners" element={<PartnerManagement />} />
         {/* Route pour le management des projets */}

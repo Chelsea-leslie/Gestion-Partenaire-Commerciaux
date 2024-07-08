@@ -52,7 +52,7 @@ const handleSnackbarClose = () => {
         <Box>
           <Paper
             elevation={3}
-            sx={{ padding: 4, maxWidth: 500, width: "100%", opacity: 0.9 }}
+            sx={{ padding: 4, maxWidth: 500, width: "100%", opacity: 1 }}
           >
             <Button
               startIcon={<ArrowBackIcon />}
@@ -70,7 +70,11 @@ const handleSnackbarClose = () => {
             >
               Retour
             </Button>
-            <Typography variant="h4" gutterBottom sx={{ textAlign: "center" }}>
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{ fontFamily: "Montserrat", fontWeight: "bold" }}
+            >
               Ajouter un Partenaire
             </Typography>
             <form onSubmit={handleSubmit}>
